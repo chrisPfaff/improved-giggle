@@ -1,0 +1,32 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.inputs {
+  background-color: rgb(46, 45, 44);
+  padding: 2em;
+  border-radius: 1em;
+  box-shadow: #fff 0 0 10px .5em;
+}
+
+label {
+  padding-right: 2em;
+  font-size: 2em;
+}
+
+input {
+  font-size: 2em;
+  width: 80%;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  color: black;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.input + .input {
+  margin-top: 2em;
+}
