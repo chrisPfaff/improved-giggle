@@ -9,7 +9,7 @@
   background-color: rgb(46, 45, 44);
   padding: 2em;
   border-radius: 1em;
-  box-shadow: #fff 0 0 10px .5em;
+  box-shadow: #fff 0 0 10px 0.5em;
 }
 
 label {
@@ -25,6 +25,25 @@ input {
   color: black;
   border: 1px solid #ccc;
   background-color: #fff;
+}
+
+.submit-button {
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+  padding: 0;
+  cursor: pointer;
+  background-color: #ccc;
+  color: black;
+  margin-top: 2em;
+  padding: 0.2em 0.5em;
+  font-size: 2em;
+  border-radius: 8px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 2px solid currentcolor;
+  }
 }
 
 .input + .input {
