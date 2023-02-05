@@ -1,6 +1,8 @@
 import { PrismaClient } from '@prisma/client'
+import bcrypt from 'bcrypt';
 import express from 'express';
 import path from 'path';
+const saltRounds = 10;
 
 // const prisma = new PrismaClient()
 
@@ -25,7 +27,9 @@ const app = express();
 app.get('/api', () => {
   console.log("working")
 });
-
+app.get('/api/help', () => {
+  console.log("help")
+});
 if (process.env.NODE_ENV === 'production') {
   console.log(`__dirname = ${__dirname}`);
   app.use(express.static(path.join(__dirname, '..', 'dist')));
