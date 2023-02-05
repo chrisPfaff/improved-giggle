@@ -1,8 +1,9 @@
 import './App.css';
 
+import { useEffect, useState } from 'react';
+
 import Input from './components/Input';
 import Success from './components/Success';
-import { useState } from 'react';
 
 function App() {
   const [user, setUser] = useState({
@@ -10,6 +11,19 @@ function App() {
     email: '',
     password: '',
   });
+  useEffect(() => {
+    const getMessage = async () => {
+      try {
+        const response = await fetch('/api');
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.log('error');
+      }
+    };
+    getMessage();
+  }, []);
+
   console.log('render');
   return (
     <div className="App">
