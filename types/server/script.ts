@@ -23,9 +23,16 @@ const saltRounds = 10;
 
 
 const app = express();
+app.use(express.json())
 
-app.get('/api', () => {
-  console.log("working")
+
+app.post('/api', (req, res) => {
+  bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+    if(err) {
+      console.log(err)
+    }
+    console.log("hash", hash)
+});
 });
 app.get('/api/help', () => {
   console.log("help")
