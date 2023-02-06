@@ -6,13 +6,34 @@ import Button from './components/Button';
 import Input from './components/Input';
 import Success from './components/Success';
 
+type signUpData = {
+  name: string;
+  email: string;
+  password: string;
+};
+
 function App() {
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
-    console.log(data);
+    const apiCall = async ({ name, email, password }: signUpData) => {
+      try {
+        const response = await fetch('/api', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name, email, password }),
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.log('error');
+      }
+    };
+    apiCall(data as signUpData);
   };
   // useEffect(() => {
   //   const getMessage = async () => {
