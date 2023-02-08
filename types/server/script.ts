@@ -31,7 +31,7 @@ app.post('/api', (req, res) => {
     if(err) {
       console.log(err)
     }
-    console.log("hash", hash)
+    res.json(hash)
 });
 });
 app.get('/api/help', () => {
