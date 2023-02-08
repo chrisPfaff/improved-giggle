@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
 import express from 'express';
 import path from 'path';
@@ -20,22 +20,19 @@ const saltRounds = 10;
 //     process.exit(1)
 //   })
 
-
-
 const app = express();
-app.use(express.json())
-
+app.use(express.json());
 
 app.post('/api', (req, res) => {
-  bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-    if(err) {
-      console.log(err)
+  bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+    if (err) {
+      console.log(err);
     }
-    res.json(hash)
-});
+    res.json(hash);
+  });
 });
 app.get('/api/help', () => {
-  console.log("help")
+  console.log('help');
 });
 if (process.env.NODE_ENV === 'production') {
   console.log(`__dirname = ${__dirname}`);
@@ -44,6 +41,5 @@ if (process.env.NODE_ENV === 'production') {
 
   app.listen(5000, () => console.log('listening on port 5000'));
 }
-
 
 export default app;

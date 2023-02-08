@@ -1,5 +1,6 @@
 import './App.css';
 
+import LoggedIn from './components/LoggedIn';
 import SignUp from './components/SignUp';
 import { checkAuth } from './utils/session';
 import { useState } from 'react';
@@ -19,7 +20,7 @@ function App() {
   //   getMessage();
   // }, []);
 
-  return <div className="App">{auth ? <h1>Logged In</h1> : <SignUp />}</div>;
+  return <div className="App">{auth ? <LoggedIn /> : <SignUp />}</div>;
 }
 
 export default App;
