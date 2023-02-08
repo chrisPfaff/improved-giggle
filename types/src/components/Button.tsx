@@ -1,13 +1,11 @@
-import React, { ReactEventHandler } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 
-type Props = {};
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & { text: string };
 
-export default function Button({}: Props) {
+export default function Button({ text, ...props }: Props) {
   return (
     <>
-      <button className="submit-button" type="submit">
-        Sign Up
-      </button>
+      <button {...props}>{text}</button>
     </>
   );
 }
