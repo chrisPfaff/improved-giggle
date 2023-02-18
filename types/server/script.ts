@@ -19,25 +19,27 @@ async function main(pass, name, email) {
 const app = express();
 app.use(express.json());
 
-app.post('/api', (req, res) => {
+app.post('/signup', (req, res) => {
   bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
     if (err) {
       console.log(err);
     }
     main(hash, req.body.email, req.body.name)
       .then(async () => {
+        res.send({ message: 'success', hash: hash });
         await prisma.$disconnect();
       })
       .catch(async e => {
-        console.error(e);
+        console.log(e);
         await prisma.$disconnect();
-        process.exit(1);
+        res.send({ message: 'error' });
+        //process.exit(1);
       });
-    res.json(hash);
   });
 });
-app.get('/api/help', () => {
+app.get('/api/help', (req, res) => {
   console.log('help');
+  res.json('help api end');
 });
 if (process.env.NODE_ENV === 'production') {
   console.log(`__dirname = ${__dirname}`);
