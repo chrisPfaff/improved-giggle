@@ -14,7 +14,7 @@ const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
   const data = Object.fromEntries(formData);
   const apiCall = async ({ name, email, password }: signUpData) => {
     try {
-      const response = await fetch('/api', {
+      const response = await fetch('/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,10 +22,14 @@ const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
         body: JSON.stringify({ name, email, password }),
       });
       const data = await response.json();
-      localStorage.setItem('token', data);
-      window.location.reload();
+      if (data.message === 'success') {
+        localStorage.setItem('token', data.hash);
+        window.location.reload();
+      } else {
+        alert('Email already exists');
+      }
     } catch (error) {
-      console.log('error');
+      console.log(error);
     }
   };
   apiCall(data as signUpData);
