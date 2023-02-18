@@ -1,19 +1,18 @@
 import app from './server/script';
 // https://vitejs.dev/config/
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import reactRefresh from '@vitejs/plugin-react-refresh'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import reactRefresh from '@vitejs/plugin-react-refresh';
 
 const expressServerPlugin = (path, expressApp) => ({
   name: 'configure-server',
   configureServer(server) {
     server.middlewares.use(path, expressApp);
-  }
+  },
 });
 
 export default defineConfig({
-  plugins: [react(), expressServerPlugin('/', app),
-  reactRefresh()],
+  plugins: [react(), expressServerPlugin('/', app)],
   build: {
     manifest: true,
     rollupOptions: {
@@ -23,6 +22,6 @@ export default defineConfig({
   server: {
     hmr: {
       port: 443,
-    }
-  }
-})
+    },
+  },
+});
