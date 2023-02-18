@@ -45,7 +45,11 @@ export default function SignUp() {
           <Input text="Password :" forId="password">
             <input type="password" name="password" id="password" />
           </Input>
-          <Button text={'Signup'} className={'submit-button'} type={'submit'} />
+          <Button
+            text={'Sign-up'}
+            className={'submit-button'}
+            type={'submit'}
+          />
         </form>
       </div>
     </div>
